@@ -12,7 +12,7 @@
         compatible = "zmk,rgb-matrix-transform";
 
         // map[strip_idx] = binding_idx
-        // 鏁扮粍闀垮害 = chain-length (61)
+        // 数组长度 = chain-length (61)
         map = <
              0  1  2  3  4  5  6  7  8  9 10 11 12 13
             27 26 25 24 23 22 21 20 19 18 17 16 15 14
@@ -90,6 +90,17 @@
     underglow-layer {
         compatible = "zmk,underglow-layer";
         transform = <&rgb_transform>;
+
+        lock_rgb {
+            layer-id = <LAYER_Lock>;
+            bindings = <
+&ug WHITE     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK
+&ug BLACK     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK
+&ug BLACK     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK               &ug BLACK
+&ug BLACK                &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK               &ug BLACK
+&ug BLACK     &ug BLACK &ug BLACK                      &ug BLACK                      &ug BLACK &ug BLACK &ug BLACK               &ug BLACK
+            >;
+        };
 
         default_rgb {
             layer-id = <LAYER_Base>;
