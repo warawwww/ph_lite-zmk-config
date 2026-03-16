@@ -82,11 +82,11 @@
                 lock_layer {
             display-name = "Lock";
             bindings = <
-&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &trans
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &none
-&none           &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &none
-&none    &none  &none                      &none                      &none  &none  &none  &none
+&none           &none  &none  &none  &none  &trans &none  &none  &none  &none  &none          &none
+&none    &none  &none                      &none                      &none  &none  &trans  &none
             >;
         };
 
