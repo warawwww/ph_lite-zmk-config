@@ -23,6 +23,18 @@
 
 / {
 
+    combos {
+        compatible = "zmk,combos";
+
+        // fn(59) + B(46) + Backspace(13) on LAYER_Lock -> unlock
+        combo_unlock {
+            timeout-ms = <100>;
+            key-positions = <59 46 13>;
+            bindings = <&unlock_macro>;
+            layers = <LAYER_Lock>;
+        };
+    };
+
     behaviors {
         
         // Macro to clear current BT profile (tap)
@@ -39,11 +51,18 @@
             bindings = <&bt BT_CLR_ALL>;
         };
 
-        // Soft off macro: switch to lock layer first, then power off
+                // Soft off macro: RGB on -> switch to lock layer -> power off
         soft_off_macro: soft_off_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to LAYER_Lock>, <&soft_off>;
+            bindings = <&rgb_ug RGB_ON>, <&to LAYER_Lock>, <&soft_off>;
+        };
+
+        // Unlock macro: switch to base layer -> RGB off
+        unlock_macro: unlock_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to LAYER_Base>, <&rgb_ug RGB_OFF>;
         };
 
         // Hold to clear all BT profiles, Tap to clear current
@@ -60,14 +79,14 @@
     keymap {
         compatible = "zmk,keymap";
 
-        lock_layer {
+                lock_layer {
             display-name = "Lock";
             bindings = <
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &none
 &none           &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &none
-&none    &none  &none                      &none                      &none  &lt LAYER_Function LEFT  &none  &none
+&none    &none  &none                      &none                      &none  &none  &none  &none
             >;
         };
 
@@ -78,7 +97,7 @@
 &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I     &kp O   &kp P     &kp LBKT  &kp RBKT      &kp BSLH
 &kp CAPS  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K     &kp L   &kp SEMI  &kp SQT                 &kp RET
 &kp LSHFT        &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M     &kp COMMA &kp DOT &kp SLASH               &mt RSHFT UP
-&kp LCTRL &kp LGUI &kp LALT                 &kp SPACE                &kp RALT  &lt LAYER_Function LEFT  &mt RGUI DOWN  &mt RCTRL RIGHT
+&kp LCTRL &kp LGUI &kp LALT                 &kp SPACE                &kp RALT  &mt RGUI DOWN  &lt LAYER_Function LEFT  &mt RCTRL RIGHT
             >;
         };
 
@@ -96,10 +115,10 @@
         bluetooth_layer {
             display-name = "Bluetooth";
             bindings = <
-&trans       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt_clear_holdtap 0 0
+&trans       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &soft_off_macro
 &out OUT_TOG &trans        &trans        &trans        &bootloader   &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &soft_off_macro
-&trans                     &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &to LAYER_Base
+&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &bt_clear_holdtap 0 0
+&trans                     &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &trans
 &trans       &trans        &trans                                    &trans                        &trans  &trans  &trans                  &trans
             >;
         };
