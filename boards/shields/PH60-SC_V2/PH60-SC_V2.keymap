@@ -51,12 +51,11 @@
             bindings = <&bt BT_CLR_ALL>;
         };
 
-                        // Soft off macro: RGB on -> wait for flash write -> switch to lock layer -> power off
+                                // Soft off macro: switch to lock layer -> power off
         soft_off_macro: soft_off_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <500>;
-            bindings = <&rgb_ug RGB_ON>, <&to LAYER_Lock>, <&soft_off>;
+            bindings = <&to LAYER_Lock>, <&soft_off>;
         };
 
         // Unlock macro: switch to base layer -> RGB off
