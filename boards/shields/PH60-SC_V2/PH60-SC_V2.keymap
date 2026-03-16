@@ -26,10 +26,10 @@
     combos {
         compatible = "zmk,combos";
 
-        // fn(59) + B(46) + Backspace(13) on LAYER_Lock -> unlock
+                // fn(59) + B(46) + Enter(40) on LAYER_Lock -> unlock
         combo_unlock {
             timeout-ms = <100>;
-            key-positions = <59 46 13>;
+            key-positions = <59 46 40>;
             bindings = <&unlock_macro>;
             layers = <LAYER_Lock>;
         };
@@ -51,10 +51,11 @@
             bindings = <&bt BT_CLR_ALL>;
         };
 
-                // Soft off macro: RGB on -> switch to lock layer -> power off
+                        // Soft off macro: RGB on -> wait for flash write -> switch to lock layer -> power off
         soft_off_macro: soft_off_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <500>;
             bindings = <&rgb_ug RGB_ON>, <&to LAYER_Lock>, <&soft_off>;
         };
 
@@ -79,12 +80,12 @@
     keymap {
         compatible = "zmk,keymap";
 
-                lock_layer {
+                        lock_layer {
             display-name = "Lock";
             bindings = <
-&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &trans
 &none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &none
+&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none          &trans
 &none           &none  &none  &none  &none  &trans &none  &none  &none  &none  &none          &none
 &none    &none  &none                      &none                      &none  &none  &trans  &none
             >;
