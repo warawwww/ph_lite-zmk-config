@@ -51,18 +51,18 @@
             bindings = <&bt BT_CLR_ALL>;
         };
 
-                                // Soft off macro: switch to lock layer -> power off
+                                        // Soft off macro: RGB off -> switch to lock layer -> power off
         soft_off_macro: soft_off_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to LAYER_Lock>, <&soft_off>;
+            bindings = <&rgb_ug RGB_OFF>, <&to LAYER_Lock>, <&soft_off>;
         };
 
-        // Unlock macro: switch to base layer -> RGB off
+                // Unlock macro: switch to base layer -> RGB on
         unlock_macro: unlock_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to LAYER_Base>, <&rgb_ug RGB_OFF>;
+            bindings = <&to LAYER_Base>, <&rgb_ug RGB_ON>;
         };
 
         // Hold to clear all BT profiles, Tap to clear current

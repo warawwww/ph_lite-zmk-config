@@ -94,11 +94,11 @@
                 lock_rgb {
             layer-id = <LAYER_Lock>;
             bindings = <
-&ug WHITE     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK
-&ug BLACK     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK
-&ug BLACK     &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK               &ug WHITE
-&ug BLACK                &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug WHITE &ug BLACK &ug BLACK &ug BLACK &ug BLACK &ug BLACK               &ug BLACK
-&ug BLACK     &ug BLACK &ug BLACK                      &ug BLACK                      &ug BLACK &ug BLACK &ug WHITE               &ug BLACK
+&ug ___       &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+&ug ___       &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+&ug ___       &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___               &ug WHITE
+&ug ___                &ug ___ &ug ___ &ug ___ &ug ___ &ug WHITE &ug ___ &ug ___ &ug ___ &ug ___ &ug ___               &ug ___
+&ug ___       &ug ___ &ug ___                      &ug ___                      &ug ___ &ug ___ &ug WHITE               &ug ___
             >;
         };
 
