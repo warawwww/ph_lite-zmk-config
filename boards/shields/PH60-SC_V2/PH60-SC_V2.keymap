@@ -51,11 +51,11 @@
             bindings = <&bt BT_CLR_ALL>;
         };
 
-                                        // Soft off macro: RGB off -> switch to lock layer -> power off
+                                                                                // Soft off macro: power off (wake restarts from layer 0 = Lock)
         soft_off_macro: soft_off_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_OFF>, <&to LAYER_Lock>, <&soft_off>;
+            bindings = <&soft_off>;
         };
 
                 // Unlock macro: switch to base layer -> RGB on
